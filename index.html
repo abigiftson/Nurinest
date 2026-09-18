@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriNest India | Pure, Organic & Gentle Children's Nutrition</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.browser.min.js"></script>
+
+ <script src="dist/tailwind.js"></script>
+
+  
+</head>
+
+<body class="font-sans antialiased text-brand-walnut selection:bg-brand-mango selection:text-brand-walnut grain-overlay">
+
+  <div class="bg-brand-papaya text-white text-xs md:text-sm font-medium py-2.5 px-4 text-center tracking-wide flex items-center justify-center gap-3 relative z-50">
+    <span class="inline-flex items-center gap-1.5 bg-white/20 px-2.5 py-0.5 rounded-full text-xs font-semibold">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Doctor Approved
+    </span>
+    <span>100% Organic, No Added Sugar, Salt or Preservatives. Crafted Fresh in Kerala & Karnataka.</span>
+    <a href="#shop" class="underline hover:opacity-90 font-bold hidden sm:inline">Try Sample Pack &rarr;</a>
+  </div>
+
+  <header class="sticky top-0 z-40 bg-brand-cream/85 backdrop-blur-md border-b border-brand-sand transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-mango via-brand-papaya to-brand-avocado flex items-center justify-center shadow-md transform group-hover:rotate-6 transition-transform">
+          <i data-lucide="sprout" class="w-7 h-7 text-white stroke-[2.5]"></i>
+        </div>
+        <div>
+          <div class="font-display font-bold text-2xl md:text-3xl text-brand-walnut tracking-tight flex items-center gap-1">
+            Nutri<span class="text-brand-papaya">Nest</span>
+            <span class="text-xs uppercase bg-brand-avocado/15 text-brand-avocado px-2 py-0.5 rounded-full font-bold ml-1 tracking-wider">India</span>
+          </div>
+          <p class="text-[10px] uppercase font-bold tracking-widest text-brand-earthLight/70">Nourishing Little Tummies</p>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 font-semibold text-brand-walnut/80 text-sm">
+        <a href="#stages" class="hover:text-brand-papaya transition-colors">By Age Stages</a>
+        <a href="#ingredients" class="hover:text-brand-papaya transition-colors">Pure Ingredients</a>
+        <a href="#nutrition" class="hover:text-brand-papaya transition-colors">Why Sprouted?</a>
+        <a href="#reviews" class="hover:text-brand-papaya transition-colors">Mom Reviews</a>
+        <a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-brand-earthLight hover:text-brand-papaya transition-colors font-medium">
+          <i data-lucide="instagram" class="w-4 h-4"></i> @nutrinest.india
+        </a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Sample Kit Modal Trigger -->
+        <button onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-xl hover:bg-brand-sand transition-colors text-brand-walnut" aria-label="Cart">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-brand-papaya text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+        </button>
+
+        <a href="#stages" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-display font-semibold text-sm bg-brand-avocado text-white hover:bg-brand-avocado/90 shadow-md transition-all hover:scale-105 active:scale-95">
+          Order Fresh Batch
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-brand-walnut hover:bg-brand-sand" aria-label="Open navigation menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-brand-cream border-t border-brand-sand px-6 py-5 flex flex-col space-y-4 font-semibold text-sm">
+      <a href="#stages" onclick="toggleMobileMenu()" class="text-brand-walnut hover:text-brand-papaya">Age Stages (6m to 3y+)</a>
+      <a href="#ingredients" onclick="toggleMobileMenu()" class="text-brand-walnut hover:text-brand-papaya">Clean Transparency</a>
+      <a href="#nutrition" onclick="toggleMobileMenu()" class="text-brand-walnut hover:text-brand-papaya">Sprouted Superfoods</a>
+      <a href="#reviews" onclick="toggleMobileMenu()" class="text-brand-walnut hover:text-brand-papaya">Parent Community</a>
+      <a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" class="flex items-center gap-2 text-brand-papaya font-bold">
+        <i data-lucide="instagram" class="w-4 h-4"></i> Visit @nutrinest.india on Instagram
+      </a>
+      <button onclick="toggleCartDrawer(true); toggleMobileMenu();" class="w-full text-center bg-brand-avocado text-white py-3 rounded-xl font-display font-bold">
+        Build Baby Taster Box
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+      <!-- Background Ambient Blobs -->
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-mango/20 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/2 -right-24 w-96 h-96 bg-brand-papaya/15 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 left-1/3 w-80 h-80 bg-brand-leafLight/25 rounded-full filter blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text Content -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-mango/15 border border-brand-mango/30 text-brand-walnut text-xs md:text-sm font-semibold mb-6 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-mango animate-ping"></span>
+              Fresh Small-Batch Baby Porridges & Snacks
+            </div>
+
+            <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-brand-walnut leading-[1.1] tracking-tight">
+              Honest Nutrition for <span class="relative inline-block text-brand-papaya underline decoration-brand-mango/60 decoration-wavy">Tiniest Tummies.</span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg md:text-xl text-brand-earthLight max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+              Traditional Indian super-grains like <strong>Sprouted Ragi, Foxtail Millets, Makhana & Kerala Nendran Bananas</strong>. Zero refined sugars, zero artificial milk powders, zero compromises.
+            </p>
+
+            <!-- Quick Hero Badges -->
+            <div class="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-white border border-brand-sand shadow-sm text-brand-walnut">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-avocado"></i> Certified Organic
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-white border border-brand-sand shadow-sm text-brand-walnut">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-avocado"></i> 100% Wholefood Puree
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-white border border-brand-sand shadow-sm text-brand-walnut">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-avocado"></i> High Bioavailable Iron
+              </span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a href="#stages" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-papaya hover:bg-brand-berry text-white font-display font-bold text-base shadow-warm transform transition hover:-translate-y-0.5 active:translate-y-0 text-center flex items-center justify-center gap-2">
+                <span>Explore Food by Age Stage</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </a>
+
+              <a href="#nutrition" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white hover:bg-brand-sand/70 text-brand-walnut border-2 border-brand-walnut/10 font-display font-semibold text-base transition-colors text-center flex items-center justify-center gap-2">
+                <i data-lucide="utensils" class="w-5 h-5 text-brand-mangoDeep"></i>
+                <span>How We Sprout</span>
+              </a>
+            </div>
+
+            <!-- Trust Indicator -->
+            <div class="mt-10 pt-6 border-t border-brand-sand/80 flex items-center justify-center lg:justify-start gap-4">
+              <div class="flex -space-x-2.5 overflow-hidden">
+                <div class="inline-block h-10 w-10 rounded-full ring-2 ring-brand-cream bg-brand-mango/30 flex items-center justify-center font-bold text-brand-walnut text-xs">A</div>
+                <div class="inline-block h-10 w-10 rounded-full ring-2 ring-brand-cream bg-brand-papaya/30 flex items-center justify-center font-bold text-brand-walnut text-xs">P</div>
+                <div class="inline-block h-10 w-10 rounded-full ring-2 ring-brand-cream bg-brand-avocado/30 flex items-center justify-center font-bold text-brand-walnut text-xs">M</div>
+                <div class="inline-block h-10 w-10 rounded-full ring-2 ring-brand-cream bg-brand-mango flex items-center justify-center font-bold text-white text-xs">+12k</div>
+              </div>
+              <div class="text-left text-xs sm:text-sm">
+                <div class="flex text-brand-mango">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <span class="text-brand-earthLight font-medium">Loved by <strong>12,400+ mindful parents</strong> across India</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 relative flex items-center justify-center">
+            <!-- Floating Decorative Organic Stickers -->
+            <div class="floating-item absolute -top-4 -left-6 z-20 bg-white px-3 py-2 rounded-2xl shadow-soft border border-brand-sand flex items-center gap-2 text-xs font-bold text-brand-walnut animate-float">
+              <span class="text-xl">🥭</span> Ratnagiri Mango
+            </div>
+
+            <div class="floating-item absolute top-1/3 -right-6 z-20 bg-white px-3.5 py-2 rounded-2xl shadow-soft border border-brand-sand flex items-center gap-2 text-xs font-bold text-brand-walnut animate-float-rev">
+              <span class="text-xl">🌾</span> Sprouted Ragi
+            </div>
+
+            <div class="floating-item absolute bottom-4 -left-8 z-20 bg-white px-3 py-2 rounded-2xl shadow-soft border border-brand-sand flex items-center gap-2 text-xs font-bold text-brand-walnut animate-float">
+              <span class="text-xl">🥑</span> Easy Tummy Digest
+            </div>
+
+            <!-- Central Pouch Render Box -->
+            <div class="pouch-perspective w-full max-w-sm">
+              <div id="heroPouch" class="pouch-3d relative bg-gradient-to-b from-[#FFA726] via-[#FF8F00] to-[#E65100] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border-4 border-white overflow-hidden cursor-pointer group">
+                
+                <!-- Pouch Top Notch Detail -->
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-white rounded-b-xl flex items-center justify-center shadow-inner">
+                  <div class="w-16 h-1 bg-brand-sand rounded-full"></div>
+                </div>
+
+                <!-- Pouch Badges -->
+                <div class="flex justify-between items-start mt-2">
+                  <span class="bg-white/90 text-brand-walnut text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-sm tracking-wider">
+                    Stage 1 • 6+ Mo
+                  </span>
+                  <span class="bg-brand-avocado text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    No Sugar
+                  </span>
+                </div>
+
+                <!-- Illustration inside pouch -->
+                <div class="my-6 text-center">
+                  <div class="w-28 h-28 mx-auto bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm p-4 relative">
+                    <span class="text-6xl group-hover:scale-110 transition-transform duration-300">🥣</span>
+                    <div class="absolute -bottom-2 bg-brand-walnut text-white text-[10px] px-2 py-0.5 rounded-md font-bold uppercase tracking-wider">
+                      Sprouted
+                    </div>
+                  </div>
+
+                  <h3 class="font-display font-bold text-2xl sm:text-3xl mt-4 text-white tracking-wide">
+                    Sprouted Ragi & Alphonso
+                  </h3>
+                  <p class="text-white/90 text-xs mt-1 font-medium">
+                    Pre-cooked baby puree porridge mix
+                  </p>
+                </div>
+
+                <!-- Nutritional tags footer inside packet -->
+                <div class="bg-black/15 rounded-2xl p-3 grid grid-cols-3 gap-1 text-center backdrop-blur-sm text-white">
+                  <div>
+                    <div class="text-xs font-extrabold">3.2x</div>
+                    <div class="text-[9px] text-white/80">More Iron</div>
+                  </div>
+                  <div class="border-x border-white/20">
+                    <div class="text-xs font-extrabold">100%</div>
+                    <div class="text-[9px] text-white/80">Organic</div>
+                  </div>
+                  <div>
+                    <div class="text-xs font-extrabold">Instant</div>
+                    <div class="text-[9px] text-white/80">Mix in 2m</div>
+                  </div>
+                </div>
+
+                <!-- Interactive hint -->
+                <div class="mt-4 text-center">
+                  <span class="text-[11px] font-bold text-white/90 inline-flex items-center gap-1 group-hover:underline">
+                    Click to add to trial kit <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="py-4 bg-brand-walnut text-brand-sand overflow-hidden whitespace-nowrap transform -rotate-1 shadow-md">
+      <div class="inline-flex space-x-12 animate-marquee text-xs sm:text-sm font-display tracking-wider font-semibold">
+        <span>🌱 100% CERTIFIED SPICED-FREE WHOLEFOODS</span>
+        <span>🍌 DRIED UNDER HYGIENIC CLEANROOMS</span>
+        <span>🥛 GLUTEN FREE OPTIONS AVAILABLE</span>
+        <span>🩺 CRAFTED WITH PEDIATRIC NUTRITIONISTS</span>
+        <span>🥄 NO PRESERVATIVES OR ADDED EMULSIFIERS</span>
+        <span>🌾 NATURALLY HIGH IN CALCIUM & IRON</span>
+        <span>🌱 100% CERTIFIED SPICED-FREE WHOLEFOODS</span>
+        <span>🍌 DRIED UNDER HYGIENIC CLEANROOMS</span>
+      </div>
+    </div>
+
+    <section id="stages" class="py-20 bg-brand-sand/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-brand-papaya font-display font-bold text-sm tracking-widest uppercase bg-brand-papaya/10 px-3.5 py-1 rounded-full">
+            Stage-wise Developmental Care
+          </span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-walnut mt-3">
+            Right Texture for Every Milestone
+          </h2>
+          <p class="text-brand-earthLight text-base mt-3">
+            Babies' digestion and chewing capabilities evolve every 60 days. Choose by your baby's exact age bracket.
+          </p>
+
+          <!-- Stage Selection Tabs -->
+          <div class="flex items-center justify-center gap-2 sm:gap-4 mt-8 flex-wrap">
+            <button onclick="switchStage('stage1')" id="btn-stage1" class="stage-tab-btn active px-5 py-3 rounded-2xl font-display font-bold text-sm md:text-base transition-all bg-brand-papaya text-white shadow-warm">
+              Stage 1 (6+ Months)
+            </button>
+            <button onclick="switchStage('stage2')" id="btn-stage2" class="stage-tab-btn px-5 py-3 rounded-2xl font-display font-bold text-sm md:text-base transition-all bg-white text-brand-walnut hover:bg-white/80 border border-brand-sand">
+              Stage 2 (8+ Months)
+            </button>
+            <button onclick="switchStage('stage3')" id="btn-stage3" class="stage-tab-btn px-5 py-3 rounded-2xl font-display font-bold text-sm md:text-base transition-all bg-white text-brand-walnut hover:bg-white/80 border border-brand-sand">
+              Stage 3 (10m - Toddlers)
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Stage Grid Products Container -->
+        <div id="stageProductsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Populated by JavaScript switchStage() -->
+        </div>
+
+      </div>
+    </section>
+
+    <section id="nutrition" class="py-20 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5">
+            <div class="relative">
+              <!-- Visual Card -->
+              <div class="bg-brand-sand rounded-3xl p-8 border border-brand-sand/60 relative z-10 shadow-soft">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-avocado bg-brand-avocado/10 px-3 py-1 rounded-full">
+                  Nutritional Bio-Availability
+                </span>
+                <h3 class="font-display font-bold text-2xl sm:text-3xl text-brand-walnut mt-4">
+                  Why Ancient Sprouting Matters for Baby Tummies?
+                </h3>
+                <p class="text-sm text-brand-earthLight mt-3 leading-relaxed">
+                  Raw unsprouted grains contain natural anti-nutrients like <em>phytic acid</em>, which bind to essential minerals and inhibit iron absorption. Sprouting breaks down these barriers naturally.
+                </p>
+
+                <div class="mt-6 space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-avocado/20 text-brand-avocado flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-sm text-brand-walnut">300% Higher Iron Assimilation</h4>
+                      <p class="text-xs text-brand-earthLight">Prevents iron deficiencies during the critical 6-12 month brain spurt.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-mango/20 text-brand-mangoDeep flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-sm text-brand-walnut">Eliminates Bloating & Gas</h4>
+                      <p class="text-xs text-brand-earthLight">Sprouting converts heavy complex starches into sweet, easily digestible simple maltoses.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-papaya/20 text-brand-papaya flex items-center justify-center shrink-0 mt-0.5">
+                      <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-sm text-brand-walnut">Zero Heavy Metals Certified</h4>
+                      <p class="text-xs text-brand-earthLight">Every single harvest is tested for lead, arsenic, and pesticide residues.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Offset decorative layer -->
+              <div class="absolute -bottom-3 -right-3 w-full h-full bg-brand-mango/30 rounded-3xl -z-0"></div>
+            </div>
+          </div>
+
+          <!-- Animated Stat Counters -->
+          <div class="lg:col-span-7">
+            <div class="grid grid-cols-2 sm:grid-cols-2 gap-6">
+              
+              <div class="bg-brand-cream p-6 rounded-2xl border border-brand-sand shadow-sm text-center">
+                <div class="font-display font-extrabold text-4xl sm:text-5xl text-brand-papaya counter-item" data-target="0">0%</div>
+                <div class="font-bold text-sm text-brand-walnut mt-2">Added Sugar or Salt</div>
+                <p class="text-xs text-brand-earthLight mt-1">Sweetened solely with authentic dried bananas & dates.</p>
+              </div>
+
+              <div class="bg-brand-cream p-6 rounded-2xl border border-brand-sand shadow-sm text-center">
+                <div class="font-display font-extrabold text-4xl sm:text-5xl text-brand-avocado counter-item" data-target="100">100%</div>
+                <div class="font-bold text-sm text-brand-walnut mt-2">Whole Food Ingredients</div>
+                <p class="text-xs text-brand-earthLight mt-1">No maltodextrin, milk solids, or preservatives.</p>
+              </div>
+
+              <div class="bg-brand-cream p-6 rounded-2xl border border-brand-sand shadow-sm text-center">
+                <div class="font-display font-extrabold text-4xl sm:text-5xl text-brand-mangoDeep counter-item" data-target="48">48 hrs</div>
+                <div class="font-bold text-sm text-brand-walnut mt-2">Traditional Germination</div>
+                <p class="text-xs text-brand-earthLight mt-1">Slow artisanal sprouting for optimal enzyme release.</p>
+              </div>
+
+              <div class="bg-brand-cream p-6 rounded-2xl border border-brand-sand shadow-sm text-center">
+                <div class="font-display font-extrabold text-4xl sm:text-5xl text-brand-walnut counter-item" data-target="2">2 min</div>
+                <div class="font-bold text-sm text-brand-walnut mt-2">Ready to Serve</div>
+                <p class="text-xs text-brand-earthLight mt-1">Just mix with warm water, breastmilk or formula.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="ingredients" class="py-20 bg-brand-sand/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-brand-avocado font-display font-bold text-sm tracking-widest uppercase bg-brand-avocado/15 px-3 py-1 rounded-full">
+            Zero Hidden Fillers
+          </span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-brand-walnut mt-3">
+            What Goes In, Stays On The Front.
+          </h2>
+          <p class="text-brand-earthLight text-sm mt-2">
+            No long chemical names. Only what Grandma would pick from the backyard orchard and local grain mill.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Ingredient 1 -->
+          <div class="bg-white rounded-3xl p-6 border border-brand-sand shadow-soft hover:shadow-warm transition-all group">
+            <div class="w-16 h-16 rounded-2xl bg-brand-mango/20 flex items-center justify-center text-3xl mb-4 group-hover:rotate-6 transition-transform">
+              🌾
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-walnut">Sprouted Ragi (Finger Millet)</h4>
+            <p class="text-xs text-brand-earthLight mt-2 leading-relaxed">
+              Sourced from Karnataka farm co-operatives. Packed with natural plant calcium for developing bone density.
+            </p>
+            <div class="mt-4 pt-3 border-t border-brand-sand text-[11px] font-bold text-brand-avocado flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Single Origin Karnataka
+            </div>
+          </div>
+
+          <!-- Ingredient 2 -->
+          <div class="bg-white rounded-3xl p-6 border border-brand-sand shadow-soft hover:shadow-warm transition-all group">
+            <div class="w-16 h-16 rounded-2xl bg-brand-papaya/20 flex items-center justify-center text-3xl mb-4 group-hover:rotate-6 transition-transform">
+              🍌
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-walnut">Kerala Nendran Raw Banana</h4>
+            <p class="text-xs text-brand-earthLight mt-2 leading-relaxed">
+              Traditional South Indian weaning staple. Rich in resistant starch for soothing colicky, sensitive tummies.
+            </p>
+            <div class="mt-4 pt-3 border-t border-brand-sand text-[11px] font-bold text-brand-papaya flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Shade Dried in Wayanad
+            </div>
+          </div>
+
+          <!-- Ingredient 3 -->
+          <div class="bg-white rounded-3xl p-6 border border-brand-sand shadow-soft hover:shadow-warm transition-all group">
+            <div class="w-16 h-16 rounded-2xl bg-brand-avocado/20 flex items-center justify-center text-3xl mb-4 group-hover:rotate-6 transition-transform">
+              🥣
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-walnut">Foxtail & Kodo Millets</h4>
+            <p class="text-xs text-brand-earthLight mt-2 leading-relaxed">
+              Pre-soaked, sprouted and gently milled into silk texture. Naturally high in dietary fibers and magnesium.
+            </p>
+            <div class="mt-4 pt-3 border-t border-brand-sand text-[11px] font-bold text-brand-avocado flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Climate-Resilient Super-grain
+            </div>
+          </div>
+
+          <!-- Ingredient 4 -->
+          <div class="bg-white rounded-3xl p-6 border border-brand-sand shadow-soft hover:shadow-warm transition-all group">
+            <div class="w-16 h-16 rounded-2xl bg-brand-mangoDeep/20 flex items-center justify-center text-3xl mb-4 group-hover:rotate-6 transition-transform">
+              🌰
+            </div>
+            <h4 class="font-display font-bold text-lg text-brand-walnut">Kashmiri Walnut & Makhana</h4>
+            <p class="text-xs text-brand-earthLight mt-2 leading-relaxed">
+              Carefully cold-crushed into digestible fine crumbs for toddlers. Essential omega-3 fatty acids for cognitive milestones.
+            </p>
+            <div class="mt-4 pt-3 border-t border-brand-sand text-[11px] font-bold text-brand-mangoDeep flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Lab Checked for Allergen Safety
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+          <div>
+            <span class="text-brand-papaya font-display font-bold text-sm tracking-widest uppercase bg-brand-papaya/10 px-3 py-1 rounded-full">
+              Real Mom Stories
+            </span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-brand-walnut mt-2">
+              From Picky Eaters to Happy Little Spoons
+            </h2>
+          </div>
+          <a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-display font-bold bg-brand-sand hover:bg-brand-mango/20 text-brand-walnut px-5 py-3 rounded-xl transition-colors">
+            <i data-lucide="instagram" class="w-5 h-5 text-brand-papaya"></i>
+            Follow @nutrinest.india
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Testimonial 1 -->
+          <div class="bg-brand-sand/50 p-6 rounded-3xl border border-brand-sand relative">
+            <div class="flex items-center gap-1 text-brand-mango mb-3">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm text-brand-walnut italic leading-relaxed">
+              "My 7-month-old was rejecting all commercial cereals because of their artificial perfume smell. NutriNest's Sprouted Ragi smells like freshly roasted nuts. She finishes her bowl in 5 minutes flat!"
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-papaya/30 text-brand-papaya font-bold flex items-center justify-center text-sm">
+                DK
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-brand-walnut">Dr. Kavya Menon</h5>
+                <p class="text-[11px] text-brand-earthLight">Pediatrician & Mom, Bengaluru</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-brand-sand/50 p-6 rounded-3xl border border-brand-sand relative">
+            <div class="flex items-center gap-1 text-brand-mango mb-3">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm text-brand-walnut italic leading-relaxed">
+              "Being a working mother, finding unadulterated baby food was tough until I discovered NutriNest on Instagram. Their Kerala Banana powder is a total lifesaver during travel emergencies."
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-avocado/30 text-brand-avocado font-bold flex items-center justify-center text-sm">
+                RP
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-brand-walnut">Rhea Pillai</h5>
+                <p class="text-[11px] text-brand-earthLight">Mom to 14-month Ahaan, Kochi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-brand-sand/50 p-6 rounded-3xl border border-brand-sand relative">
+            <div class="flex items-center gap-1 text-brand-mango mb-3">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm text-brand-walnut italic leading-relaxed">
+              "I love how honest they are with zero salt and sugar. Even my toddler drinks the Makhana-Walnut mix with warm milk every evening. Huge jump in his energy levels and immunity."
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-mango/30 text-brand-mangoDeep font-bold flex items-center justify-center text-sm">
+                SM
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-brand-walnut">Shweta Mukherjee</h5>
+                <p class="text-[11px] text-brand-earthLight">Mom of twins, Mumbai</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-br from-brand-mango via-brand-papaya to-brand-avocado relative overflow-hidden text-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <span class="bg-white/20 text-white font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full inline-block mb-4 backdrop-blur-md">
+          Start Your Baby's Weaning Journey
+        </span>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl tracking-tight leading-tight">
+          Try The NutriNest Baby First-Taster Trial Box
+        </h2>
+        <p class="mt-4 text-white/90 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          Includes 3 assorted mini-pouches (Sprouted Ragi, Kerala Banana, and Multigrain Porridge) + an organic bamboo baby spoon.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="addTrialKitToCart()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-walnut hover:bg-black text-white font-display font-bold text-base shadow-2xl transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+            <i data-lucide="package-plus" class="w-5 h-5 text-brand-mango"></i>
+            Order Trial Pack (₹399 Only)
+          </button>
+          <a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-display font-bold text-base backdrop-blur-md transition">
+            DM us on Instagram for Diet Chart
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-brand-walnut text-brand-sand/80 pt-16 pb-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-mango flex items-center justify-center text-white">
+              <i data-lucide="sprout" class="w-6 h-6"></i>
+            </div>
+            <span class="font-display font-bold text-2xl text-white">NutriNest</span>
+          </div>
+          <p class="text-xs text-brand-sand/70 mt-3 leading-relaxed">
+            Nutritious, traditional Indian wholefoods for babies and toddlers. Crafted small-batch with pure love and zero chemicals.
+          </p>
+          <div class="mt-4 flex items-center space-x-3 text-white">
+            <a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-papaya transition-colors" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-papaya transition-colors" aria-label="WhatsApp">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-papaya transition-colors" aria-label="Email">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-white text-sm mb-4">Milestone Stages</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#stages" onclick="switchStage('stage1')" class="hover:text-brand-mango">Stage 1: 6+ Months (First Spoons)</a></li>
+            <li><a href="#stages" onclick="switchStage('stage2')" class="hover:text-brand-mango">Stage 2: 8+ Months (Lumpy Textures)</a></li>
+            <li><a href="#stages" onclick="switchStage('stage3')" class="hover:text-brand-mango">Stage 3: 10+ Months & Toddler</a></li>
+            <li><a href="#stages" class="hover:text-brand-mango">Nutrient-Dense Drink Mixes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-white text-sm mb-4">Baby Health Guides</h4>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#nutrition" class="hover:text-brand-mango">Why We Sprout Grains</a></li>
+            <li><a href="#ingredients" class="hover:text-brand-mango">Picky Eater Weaning Hacks</a></li>
+            <li><a href="#nutrition" class="hover:text-brand-mango">Iron Absorption Guide</a></li>
+            <li><a href="https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi" target="_blank" class="hover:text-brand-mango">Ask our Dietitian on Instagram</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-bold text-white text-sm mb-4">NutriNest Direct Dispatch</h4>
+          <p class="text-xs text-brand-sand/70 mb-3">
+            Freshly ground every week upon receipt of orders to ensure maximum bio-active viability.
+          </p>
+          <div class="text-xs space-y-1 text-brand-sand/90">
+            <p>📍 Kitchen: Kochi & Bengaluru, India</p>
+            <p>📦 Ships PAN India within 48 Hours</p>
+            <p>🌿 FSSAI Certified Baby Food Unit</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-brand-sand/60 gap-4">
+        <p>© 2026 NutriNest India. All rights reserved. Designed for young families.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:underline">FSSAI Compliance</a>
+          <a href="#" class="hover:underline">Lab Reports</a>
+          <a href="#" class="hover:underline">Shipping & Returns</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+    <div onclick="toggleCartDrawer(false)" class="drawer-backdrop absolute inset-0 bg-black/40"></div>
+    
+    <div id="cartPanel" class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col pointer-events-auto">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-brand-sand flex items-center justify-between bg-brand-cream">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-papaya"></i>
+          <h3 class="font-display font-bold text-lg text-brand-walnut">Baby Taster Cart</h3>
+        </div>
+        <button onclick="toggleCartDrawer(false)" class="p-1 rounded-lg text-brand-walnut/70 hover:bg-brand-sand">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Item List -->
+      <div id="cartItemsList" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <div id="emptyCartState" class="text-center py-16">
+          <div class="text-5xl mb-3">🥣</div>
+          <h4 class="font-display font-bold text-base text-brand-walnut">Your Nest is Empty</h4>
+          <p class="text-xs text-brand-earthLight mt-1">Pick stage-specific porridges from our collection to begin.</p>
+          <button onclick="toggleCartDrawer(false)" class="mt-4 px-4 py-2 bg-brand-mango/20 text-brand-walnut font-bold text-xs rounded-xl hover:bg-brand-mango/30">
+            Browse Stages
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-6 border-t border-brand-sand bg-brand-cream">
+        <div class="flex justify-between items-center text-sm font-bold text-brand-walnut mb-2">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">₹0</span>
+        </div>
+        <div class="flex justify-between items-center text-xs text-brand-avocado mb-4 font-semibold">
+          <span>Shipping</span>
+          <span>FREE (Pre-orders above ₹499)</span>
+        </div>
+        <button onclick="checkoutOrder()" class="w-full py-3.5 bg-brand-papaya hover:bg-brand-berry text-white rounded-xl font-display font-bold text-sm shadow-warm transition">
+          Proceed with Fresh Batch Order
+        </button>
+        <p class="text-[10px] text-center text-brand-earthLight mt-2">
+          🔒 Secure UPI / Card / COD Available across India
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastMessage" class="fixed bottom-6 right-6 z-50 bg-brand-walnut text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="w-6 h-6 rounded-full bg-brand-avocado flex items-center justify-center text-white">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <span id="toastText" class="text-xs font-semibold">Product added to trial box!</span>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. LENIS SMOOTH SCROLL SETUP
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // 2. STAGE PRODUCTS DATA (Reflecting NutriNest Product Architecture)
+    const stageData = {
+      stage1: [
+        {
+          id: 's1-ragi',
+          name: 'Sprouted Ragi & Alphonso Puree',
+          stage: 'Stage 1 • 6+ Months',
+          price: 299,
+          badge: 'Best First Food',
+          color: 'from-amber-400 to-orange-500',
+          emoji: '🥣',
+          desc: 'Ultra-fine sprouted finger millet blended with natural Ratnagiri alphonso powder. Gentle on delicate gut flora.',
+          highlights: ['Easy Swallow', 'Rich in Calcium', 'Zero Salt']
+        },
+        {
+          id: 's1-banana',
+          name: 'Kerala Raw Banana Porridge',
+          stage: 'Stage 1 • 6+ Months',
+          price: 319,
+          badge: 'Traditional Kerala Weaning',
+          color: 'from-emerald-500 to-teal-600',
+          emoji: '🍌',
+          desc: 'Sun-dried raw Nendran bananas steamed and pulverized. Known as Kannankaya porridge, ideal for natural weight gain.',
+          highlights: ['Weight Gainer', 'Hypoallergenic', 'Digestive Aid']
+        },
+        {
+          id: 's1-rice',
+          name: 'Sprouted Red Rice & Moong Silk',
+          stage: 'Stage 1 • 6+ Months',
+          price: 279,
+          badge: 'Light Comfort',
+          color: 'from-rose-400 to-red-500',
+          emoji: '🌾',
+          desc: 'Traditional Navara red rice paired with yellow split moong dal, sprouted to eliminate infant gas and bloating.',
+          highlights: ['Gut Soothing', 'Plant Protein', 'No Preservatives']
+        }
+      ],
+      stage2: [
+        {
+          id: 's2-oats',
+          name: 'Rolled Oats, Chia & Papaya Mash',
+          stage: 'Stage 2 • 8+ Months',
+          price: 329,
+          badge: 'Chewing Practice',
+          color: 'from-orange-400 to-amber-600',
+          emoji: '🥑',
+          desc: 'Mashed soft texture oats with crushed golden papaya and omega-rich chia seeds to encourage jaw movement.',
+          highlights: ['Soft Lumps', 'Rich in Fiber', 'No Added Sugar']
+        },
+        {
+          id: 's2-millet',
+          name: 'Sprouted Multi-Millet Porridge',
+          stage: 'Stage 2 • 8+ Months',
+          price: 339,
+          badge: 'Power Breakfast',
+          color: 'from-green-500 to-emerald-700',
+          emoji: '🌾',
+          desc: 'Foxtail, Kodo, Barnyard millets with a touch of organic green cardamom. Sustained morning energy.',
+          highlights: ['Sustained Energy', 'High Iron', 'Immunity Boost']
+        },
+        {
+          id: 's2-apple',
+          name: 'Sprouted Barley, Apple & Prune',
+          stage: 'Stage 2 • 8+ Months',
+          price: 349,
+          badge: 'Happy Tummy',
+          color: 'from-red-400 to-amber-600',
+          emoji: '🍎',
+          desc: 'Gentle sprouted pearl barley with sun-dried Shimla apples and organic prunes to prevent toddler constipation.',
+          highlights: ['Bowel Regularity', 'Naturally Sweet', 'Prebiotic Rich']
+        }
+      ],
+      stage3: [
+        {
+          id: 's3-dryfruit',
+          name: 'Nuts, Makhana & Sprouted Wheat',
+          stage: 'Stage 3 • 10m - Toddler',
+          price: 399,
+          badge: 'Brain Boost',
+          color: 'from-amber-500 to-yellow-700',
+          emoji: '🌰',
+          desc: 'Coarsely milled roasted Kashmiri almonds, walnuts, and popped lotus seeds (makhana) with wholesome sprouted wheat.',
+          highlights: ['Crunchy Texture', 'Omega-3s', 'Cognitive Growth']
+        },
+        {
+          id: 's3-choco',
+          name: 'Sprouted Ragi Raw Cacao Drink Mix',
+          stage: 'Stage 3 • 10m - Toddler',
+          price: 389,
+          badge: 'Milk Companion',
+          color: 'from-amber-700 to-stone-800',
+          emoji: '🍫',
+          desc: 'Healthy replacement for sugary toddler milk powders. Natural Ecuadorian raw cacao sweetened with organic date powder.',
+          highlights: ['0% Refined Sugar', 'High Calcium', 'Delicious Hot/Cold']
+        },
+        {
+          id: 's3-savoury',
+          name: 'Sprouted Moong & Beetroot Khichdi Mix',
+          stage: 'Stage 3 • 10m - Toddler',
+          price: 349,
+          badge: 'Savoury Lunch',
+          color: 'from-pink-500 to-rose-700',
+          emoji: '🍲',
+          desc: 'Wholesome instant hot lunch mix with roasted cumin, turmeric, beetroot essence, and sprouted yellow lentils.',
+          highlights: ['Warm Savoury', 'Natural Iron', 'Ready in 3 Mins']
+        }
+      ]
+    };
+
+    // 3. CART SYSTEM STATE
+    let cart = [];
+
+    function switchStage(stageKey) {
+      // Update Tab Styles
+      document.querySelectorAll('.stage-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-papaya', 'text-white', 'shadow-warm');
+        btn.classList.add('bg-white', 'text-brand-walnut');
+      });
+      const activeBtn = document.getElementById(`btn-${stageKey}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-brand-walnut');
+        activeBtn.classList.add('bg-brand-papaya', 'text-white', 'shadow-warm');
+      }
+
+      // Render Stage Products with Animation
+      const container = document.getElementById('stageProductsGrid');
+      const items = stageData[stageKey] || stageData.stage1;
+
+      // Fade out
+      gsap.to(container, {
+        opacity: 0,
+        y: 10,
+        duration: 0.2,
+        onComplete: () => {
+          container.innerHTML = items.map(item => `
+            <div class="pouch-card bg-white rounded-3xl p-6 border border-brand-sand shadow-soft hover:shadow-warm transition-all flex flex-col justify-between group relative overflow-hidden">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-[11px] font-bold uppercase tracking-wider bg-brand-sand text-brand-walnut px-2.5 py-1 rounded-full">
+                    ${item.stage}
+                  </span>
+                  <span class="text-[11px] font-bold text-brand-avocado bg-brand-avocado/15 px-2.5 py-1 rounded-full">
+                    ${item.badge}
+                  </span>
+                </div>
+
+                <!-- Product Decorative Packet Art -->
+                <div class="w-full h-44 rounded-2xl bg-gradient-to-tr ${item.color} p-4 flex flex-col justify-between text-white shadow-md relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+                  <div class="flex justify-between items-center text-xs font-bold text-white/90">
+                    <span>100% ORGANIC</span>
+                    <span>200g NET</span>
+                  </div>
+                  <div class="text-center my-auto">
+                    <span class="text-5xl block filter drop-shadow-md">${item.emoji}</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-white/90 mt-1 block">Sprouted Fresh</span>
+                  </div>
+                  <div class="text-[10px] text-center font-medium bg-black/20 rounded-lg py-1 backdrop-blur-xs">
+                    No Artificial Flavours
+                  </div>
+                </div>
+
+                <h3 class="font-display font-bold text-xl text-brand-walnut mt-5">${item.name}</h3>
+                <p class="text-xs text-brand-earthLight mt-2 leading-relaxed">${item.desc}</p>
+
+                <!-- Micro Highlights -->
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  ${item.highlights.map(h => `
+                    <span class="text-[10px] font-semibold bg-brand-cream border border-brand-sand px-2 py-0.5 rounded-md text-brand-walnut">
+                      ✓ ${h}
+                    </span>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Card Bottom Buy Row -->
+              <div class="mt-6 pt-4 border-t border-brand-sand flex items-center justify-between">
+                <div>
+                  <span class="text-xs text-brand-earthLight">Fresh Batch</span>
+                  <div class="font-display font-bold text-xl text-brand-walnut">₹${item.price}</div>
+                </div>
+                <button onclick="addToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price}, '${item.emoji}')" class="px-4 py-2.5 rounded-xl bg-brand-avocado hover:bg-brand-avocado/90 text-white font-display font-bold text-xs flex items-center gap-1.5 shadow-sm transform active:scale-95 transition">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Add to Box
+                </button>
+              </div>
+            </div>
+          `).join('');
+
+          lucide.createIcons();
+
+          // Fade back in with GSAP
+          gsap.fromTo(container, 
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+          );
+        }
+      });
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cartDrawer');
+      const panel = document.getElementById('cartPanel');
+
+      if (open) {
+        drawer.classList.remove('pointer-events-none', 'opacity-0');
+        panel.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('pointer-events-none');
+        }, 300);
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    function showToast(message) {
+      const toast = document.getElementById('toastMessage');
+      document.getElementById('toastText').innerText = message;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 2500);
+    }
+
+    function addToCart(id, name, price, emoji) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, name, price, emoji, qty: 1 });
+      }
+      updateCartUI();
+      showToast(`Added ${name} to your taster box!`);
+
+      // Confetti burst for rewarding user action
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 28,
+          spread: 50,
+          origin: { y: 0.85 },
+          colors: ['#FFA726', '#FF6B4A', '#4E8752']
+        });
+      }
+    }
+
+    function addTrialKitToCart() {
+      addToCart('trial-pack-3', 'NutriNest 3-Pouch Discovery Box', 399, '🎁');
+      toggleCartDrawer(true);
+    }
+
+    function updateQuantity(id, delta) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((acc, curr) => acc + curr.qty, 0);
+      const subtotal = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+
+      document.getElementById('cartCountBadge').innerText = totalCount;
+      document.getElementById('cartSubtotal').innerText = `₹${subtotal}`;
+
+      const container = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div id="emptyCartState" class="text-center py-16">
+            <div class="text-5xl mb-3">🥣</div>
+            <h4 class="font-display font-bold text-base text-brand-walnut">Your Nest is Empty</h4>
+            <p class="text-xs text-brand-earthLight mt-1">Pick stage-specific porridges from our collection to begin.</p>
+            <button onclick="toggleCartDrawer(false)" class="mt-4 px-4 py-2 bg-brand-mango/20 text-brand-walnut font-bold text-xs rounded-xl hover:bg-brand-mango/30">
+              Browse Stages
+            </button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="flex items-center justify-between p-3 bg-brand-sand/40 rounded-2xl border border-brand-sand">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">${item.emoji}</span>
+              <div>
+                <h5 class="text-xs font-bold text-brand-walnut leading-snug">${item.name}</h5>
+                <span class="text-xs font-bold text-brand-papaya">₹${item.price}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-xl border border-brand-sand">
+              <button onclick="updateQuantity('${item.id}', -1)" class="text-brand-walnut hover:text-brand-papaya font-bold px-1.5">-</button>
+              <span class="text-xs font-bold text-brand-walnut px-1">${item.qty}</span>
+              <button onclick="updateQuantity('${item.id}', 1)" class="text-brand-walnut hover:text-brand-papaya font-bold px-1.5">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function checkoutOrder() {
+      if (cart.length === 0) {
+        showToast('Please add items to your box before ordering!');
+        return;
+      }
+      showToast('Redirecting directly to fresh batch dispatch desk...');
+      setTimeout(() => {
+        // Direct link to Instagram DM for order confirmation or inquiry
+        window.open('https://www.instagram.com/nutrinest.india?stkn=cHphYzB3YnRtZnVi', '_blank');
+      }, 1000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Initial stage render
+      switchStage('stage1');
+
+      // Hero Elements Stagger In
+      gsap.from('h1', {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+      });
+
+      gsap.from('#heroPouch', {
+        scale: 0.9,
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'back.out(1.4)',
+        delay: 0.2
+      });
+
+      // Floating items subtle bounce on mouse move
+      const heroVisual = document.querySelector('.pouch-perspective');
+      if (heroVisual) {
+        heroVisual.addEventListener('mousemove', (e) => {
+          const rect = heroVisual.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to('#heroPouch', {
+            rotationY: x * 0.05,
+            rotationX: -y * 0.05,
+            duration: 0.4,
+            ease: 'power1.out'
+          });
+        });
+
+        heroVisual.addEventListener('mouseleave', () => {
+          gsap.to('#heroPouch', {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.5)'
+          });
+        });
+      }
+
+      // Animated Stat Number Counters on Scroll
+      ScrollTrigger.batch('.counter-item', {
+        onEnter: (elements) => {
+          elements.forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'), 10);
+            const isPercent = el.innerText.includes('%');
+            const isHrs = el.innerText.includes('hrs');
+            const isMin = el.innerText.includes('min');
+
+            gsap.fromTo(el, 
+              { innerText: 0 }, 
+              {
+                innerText: target,
+                duration: 1.8,
+                ease: 'power1.inOut',
+                snap: { innerText: 1 },
+                onUpdate: function() {
+                  let val = Math.round(this.targets()[0].innerText);
+                  if (isPercent) el.innerText = val + '%';
+                  else if (isHrs) el.innerText = val + ' hrs';
+                  else if (isMin) el.innerText = val + ' min';
+                  else el.innerText = val;
+                }
+              }
+            );
+          });
+        },
+        once: true
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+ /* Custom organic shapes & backdrop blur */
+    body {
+      background-color: #FFFDF7;
+      color: #2C1810;
+      overflow-x: hidden;
+    }
+    
+    .grain-overlay {
+      background-image: radial-gradient(rgba(44, 24, 16, 0.04) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .pouch-perspective {
+      perspective: 1000px;
+    }
+
+    .pouch-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .pouch-card:hover .pouch-3d {
+      transform: translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.02);
+    }
+
+    /* Custom custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFFDF7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FFA726;
+      border-radius: 9999px;
+    }
+
+    /* Floating badges & stickers */
+    .sticker-badge {
+      box-shadow: 0 4px 0 #2C1810;
+    }
+
+    /* Modal transition */
+    .drawer-backdrop {
+      backdrop-filter: blur(8px);
+    }
